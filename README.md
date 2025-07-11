@@ -1,15 +1,3 @@
-# Overview
-This project involved the containerization and deployment of a full-stack yolo application using Docker.
+# My initial commit; with everything as cloned remaining the same
+This is my first initial commit after forking and cloning the repository
 
-
-# Requirements
-Install the docker engine here:
-- [Docker](https://docs.docker.com/engine/install/) 
-
-## How to launch the application 
-
-
-![Alt text](image.png)
-
-## How to run the app
-Use vagrant up --provison command
