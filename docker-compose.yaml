@@ -27,6 +27,21 @@ vincent-yolo-client:
 
 # Let's create the Backend micro service
 
+# The name of the container for backend service. 
+vincent-yolo-backend:                             # This service represents a container that runs the backend nodeJS app
+
+  image: vokemwa/vincent-yolo-backend:v1.0.0      # Name and Tag of the docker image i.e. docker username, image name and image tag
+  build: ./backend                                # Instructs Docker Compose to build a docker image using docker file in the backend directory
+  container_name: vincent-yolo-backend            # Represents the name of the container
+  stdin_open: true                                # keeps the standard input open to enable interractive mode of the container. This is helpul for debugging
+  tty: true                                       # Allows the container behave like it has a real terminal
+  restart: always                                 # Docker compose will restart the container if it crashes or the system reboots
+  ports:
+    - "5000:5000"                                 # Mapping of host port 5000 to container port 5000. Therefore your backend app will be accessible on http://localhost:5000
+  depends_on: 
+    - vincent-app-ip-mongo                        # Ensures that the mongoDB service starts before the backend service
+  networks:
+    - vincent-network                             # Connects this container to a shared network called vincent-network
 
 # Mongo DB micro service
 
