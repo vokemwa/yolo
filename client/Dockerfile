@@ -1,6 +1,6 @@
-# This is build stage
+# This is build stage1
 
-# choose the latest image for node. The image chosen here is light weight. Am not sure whether it will run the current version of code coz ni old kiasi.
+# choose the latest image. The image chosen here is light weight. Am not sure whether it will run the current version of code coz ni old kiasi.
 
 FROM node:18-alpine AS builder
 
@@ -25,12 +25,18 @@ COPY . .
 
 RUN npm run build
 
+# Production stage2. Am using nginx to serve the application. Have used nginx coz it's light weight and faster. 
+
+FROM nginx:stable-alpine AS prod
+
+# copy contents of the above build output to the public directory of nginx
 
 
-# Production stage. Am using nginx to serve the application. Have used nginx coz it's light weight and faster. 
+COPY --from=build /app/build /usr/share/nginx/html
 
-FROM nginx:stable-alpine AS production
+# Render the port nginx runs on to the application
 
+EXPOSE 80
 
-
+# there is no need to run CMD since am using the official nginx image which includes the command by default
 
