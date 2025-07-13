@@ -1,0 +1,20 @@
+# Indicates the file format version
+version: "3.8"
+
+# Services: They define each microservice container
+
+services:
+
+# Let's create the Frontend micro service
+
+
+# Let's create the Backend micro service
+
+
+# Mongo DB micro service
+
+
+# Network Infrastructure
+
+
+# Docker volume
