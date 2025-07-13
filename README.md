@@ -1,17 +1,37 @@
-# I needed to maintain the contents of this file then add mine from the bottom
-This is my first initial commit after forking and cloning the repository
 
-# Create a Dockerfile
--touch Dockerfile
+# **Containerizing A micro service Application**
 
-# create a docker-compose.yaml file
--touch docker-compose.yaml
+The role of this project is to containerize a react application and use containers to deploy the application as a microservice
 
-# Created a dockerfile for both frontend and backend
+# CREATE DOCKER-FILES 
+Create Dockerfiles for both frontend and backend. 
+### Create frontend dockerfile command 
+`touch client/Dockerfile`
 
-# Docker file commands for frontend React APP
+### Create backend dockerfile file
+`touch backend/Dockerfile`
 
-##Build stage
-Choose the latest image which should be light weight.
--FROM node:18-alpine AS builder
+## Write the contents of Frontend Dockerfile
+#### The build stage: Choose light weight image
+`FROM node:18-alpine AS builder`
+
+#### Create a working directory. I decided to use `/app` for simplicity
+`WORKDIR /app`
+
+#### Copy package.json and package-lock.json from the local folder to the working directory
+`COPY package*.json ./`
+
+#### Install the application dependencies. Used `npm ci` which is more faster, more reliable and clearner
+`RUN npm ci`
+
+#### Copy everything in the current directory to the current working directory which is inside the image
+`COPY . .`
+
+#### Build the app
+`RUN npm run build`
+
+
  
+
+
+
