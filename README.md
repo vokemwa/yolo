@@ -40,40 +40,40 @@ Create Dockerfiles for both frontend and backend.
 
 
  ## **Write the contents of Backend (NodeJS) Dockerfile**
- ## Stage1: Build- The first build stage using node.js V18 and alpine linux distro(light weight)
+ #### Stage1: Build- The first build stage using node.js V18 and alpine linux distro(light weight)
 
  `FROM node:18-alpine AS build`
 
 
-## Sets the working directory
+#### Sets the working directory
 
 `WORKDIR /app`
 
-## Copies packages files and installs only production dependencies
+#### Copies packages files and installs only production dependencies
 
 `COPY package*.json ./`
 
-## Continous integration (ci) installs dependencies based strictly on `package-lock.json` file
+#### Continous integration (ci) installs dependencies based strictly on `package-lock.json` file
 
 `RUN npm ci --omit=dev && npm cache clean --force`
 
-## Copies the rest of the application source code from the host to the container i.e. Copies everything into the container
+#### Copies the rest of the application source code from the host to the container i.e. Copies everything into the container
 `COPY . .`
 
-## Stage2: Runtime: a fresh, second image that uses only what is needed to run the application
+#### Stage2: Runtime: a fresh, second image that uses only what is needed to run the application
 
 `FROM node:18-alpine AS runtime`
 
-## Set the working directory inside the runtime container
+#### Set the working directory inside the runtime container
 
 `WORKDIR /app`
 
-## copies everything from the /app directory in the build stage into the new runtime container
+#### copies everything from the /app directory in the build stage into the new runtime container
 
 `COPY --from=build /app /app`
 
-## Expose the Application port
+#### Expose the Application port
 `EXPOSE 5000`
 
-## Start the server
+#### Start the server
 `CMD ["node", "server.js"]`
