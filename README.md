@@ -30,6 +30,14 @@ Create Dockerfiles for both frontend and backend.
 #### Build the app
 `RUN npm run build`
 
+#### Production stage2: For multistage builds, am using nginx to serve the application. Have used nginx coz it's light weight and faster. 
+
+`FROM nginx:stable-alpine AS prod`
+
+#### copy contents of the React APP build output above to the public nginx directory. It actually copies the contents of the build to the directory where nginx serves static files
+
+`COPY --from=build /app/build /usr/share/nginx/html`
+
 
  
 
