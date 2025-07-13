@@ -7,6 +7,23 @@ services:
 
 # Let's create the Frontend micro service
 
+# The name of the container for frontend
+vincent-yolo-client: 
+
+  image: vokemwa/vincent-yolo-client:v1.0.0 # represents docker username, image name and image tag
+  build: ./client                           # Instructs Docker to build the image from ./client directory that contains the Dockerfile for the frontend
+  container-name: vincent-yolo-client       # A custom name to the frontend container
+  stdin_open: true                          # keeps the standard input open to enable interractive mode of the container. This is helpul for debugging
+  tty: true                                 # Allows the container behave like it has a real terminal
+  ports: 
+    -  "3000:3000"                          # This maps the host port 3000 to container port which by default is 3000 for react
+  depends-on: 
+    -  vincent-yolo-backend                 # This container waits for the backend container to start before starting
+  networks:
+    -  vincent-network                      # Connects this container to a shared network called vincent-network
+
+
+
 
 # Let's create the Backend micro service
 
