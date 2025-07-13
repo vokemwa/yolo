@@ -11,7 +11,7 @@ Create Dockerfiles for both frontend and backend.
 ### Create backend dockerfile file
 `touch backend/Dockerfile`
 
-## Write the contents of Frontend Dockerfile
+## **Write the contents of Frontend Dockerfile**
 #### The build stage: Choose light weight image
 `FROM node:18-alpine AS builder`
 
@@ -39,7 +39,24 @@ Create Dockerfiles for both frontend and backend.
 `COPY --from=build /app/build /usr/share/nginx/html`
 
 
- 
+ ## **Write the contents of Backend (NodeJS) Dockerfile**
+ ## Stage1: Build- The first build stage using node.js V18 and alpine linux distro(light weight)
+
+ `FROM node:18-alpine AS build`
 
 
+## Sets the working directory
+
+`WORKDIR /app`
+
+## Copies packages files and installs only production dependencies
+
+`COPY package*.json ./`
+
+## Continous integration (ci) installs dependencies based strictly on `package-lock.json` file
+
+`RUN npm ci --omit=dev && npm cache clean --force`
+
+# Copies the rest of the application source code from the host to the container i.e. Copies everything else (source code, server files, etc.) into the container
+`COPY . .`
 
