@@ -299,3 +299,12 @@ volumes:
 ### see results for docker-hub images
 
 ![docker-hub-images](Images/docker-hub-images.png)
+
+### see results accessing the frontend; localhost: 3000/#products
+
+![frontend-access](Images/localhost3000.png)
+
+### see results accessing the backend; localhost:5000/
+
+![frontend-access](Images/localhost5000.png)
+
