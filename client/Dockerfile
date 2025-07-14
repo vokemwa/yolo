@@ -21,6 +21,10 @@ RUN npm ci
 
 COPY . .
 
+# Fix webpack or openssl issues 
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # then build the app
 
 RUN npm run build
