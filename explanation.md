@@ -34,6 +34,7 @@
   - Create frontend container by running docker file in the /client directory, create a network and a volume
   - Create backend container by running docker file in the /backend directory, create a network and a volume
   - Create a mongodb database container
+- when mapping front end port, map 3000-->80. port 80 is the default port for nginx server
 - We run both containers (the three of them) and tested the application functionalities
 
 The rest of the steps are well documented in the README file with some screenshots of whe outputs
