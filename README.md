@@ -306,5 +306,5 @@ volumes:
 
 ### see results accessing the backend; localhost:5000/
 
-![frontend-access](Images/localhost5000.png)
+![backend-access](Images/localhost5000.png)
 
