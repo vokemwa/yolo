@@ -287,3 +287,15 @@ volumes:
 ### See the results of the database connection
 
 ![Database-Connection](Images/Database-Connection.png)
+
+### see the results of running containers
+
+![Running-Containers](Images/running-containers.png)
+
+### see results for running networks
+
+![Running-networks](Images/running-network.png)
+
+### see results for docker-hub images
+
+![docker-hub-images](Images/docker-hub-images.png.png)
