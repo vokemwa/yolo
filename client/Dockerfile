@@ -32,7 +32,7 @@ FROM nginx:stable-alpine AS prod
 # copy contents of the above build output to the public directory of nginx
 
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 
 # Render the port nginx runs on to the application
 
