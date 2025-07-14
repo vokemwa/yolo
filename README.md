@@ -276,4 +276,14 @@ volumes:
 
 ### See the results of the images downloading
 
-`![Images](Images/Pulling-Images.png)`
+![Images](Images/Pulling-Images.png)
+
+
+### See the results of the of the containers running
+
+![Running containers](Images/Containers-dockerfiles.png)
+
+
+### See the results of the database connection
+
+![Database-Connection](Images/Database-Connection.png)
