@@ -62,5 +62,15 @@ vincent-app-ip-mongo:                             # The service creates a contai
 
 # Network Infrastructure
 
+networks:                 
+  vincent-network:                                # The name of the custom network
+    name: vincent-network                         # This is the actual network name to be used by docker when creating the network 
+    driver: bridge                                # Creates a network driver for doker. And it's the default
+    attachable: true                              # This allows other containers that are not specified in the docker-compose file to join the network. 
+
 
 # Docker volume
+
+volumes:
+  vincent-mongo-data:                             # volume name
+    driver: local                                 # Docker will store the data locally
