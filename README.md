@@ -77,3 +77,18 @@ Create Dockerfiles for both frontend and backend.
 
 #### Start the server
 `CMD ["node", "server.js"]`
+
+#### **Compressed commands for Backend nodeJS**
+
+```Dockerfile
+FROM node:18-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev && npm cache clean --force
+COPY . .
+
+FROM node:18-alpine AS runtime
+WORKDIR /app
+COPY --from=build /app /app
+EXPOSE 5000
+CMD ["node", "server.js"]
