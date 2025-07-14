@@ -298,4 +298,4 @@ volumes:
 
 ### see results for docker-hub images
 
-![docker-hub-images](Images/docker-hub-images.png.png)
+![docker-hub-images](Images/docker-hub-images.png)
