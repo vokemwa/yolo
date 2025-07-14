@@ -14,7 +14,7 @@ services:
     stdin_open: true                                       # keeps the standard input open to enable interractive mode of the container. This is helpul for debugging
     tty: true                                              # Allows the container behave like it has a real terminal
     ports:
-      - "3000:3000"                                        # This maps the host port 3000 to container port which by default is 3000 for react
+      - "3000:80"                                          # This maps the host port 3000 to container port which by default is 3000 for react
     depends_on:
       - vincent-yolo-backend                               # This container waits for the backend container to start before starting
     networks:
