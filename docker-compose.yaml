@@ -44,7 +44,21 @@ vincent-yolo-backend:                             # This service represents a co
     - vincent-network                             # Connects this container to a shared network called vincent-network
 
 # Mongo DB micro service
+# The service creates a container for MongoDB
 
+vincent-app-ip-mongo:                             # The service creates a container for MongoDB
+
+  image: mongo                                    # This is an official mongo db Docker image
+  container_name: vincent-mongo                   # Gives a unique name to the mongo db container instead of the default
+  ports:
+    - "27017:27017"                               # This maps the port 27017 which is the default mongoDB port from your host machine to the container. Mongo db will be accessible on localhost:27017 from the local computer
+  networks:
+    - vincent-network                             # Connects this container to a shared network called vincent-network. This allows inter-service communication
+  volumes:
+    - type: volume                                # This specifies the type of mount i.e. a named volume that is managed by Docker
+      source: vincent-mongo-data                  # This creates the name of the docker volume which helps in tracking the volume 
+      target: /data/db                            # Actually, this is the default directory where MongoDB stores all its data inside the container. This directory will be redirected to a persistent external volume called "vincent-mongo-data"
+            
 
 # Network Infrastructure
 
