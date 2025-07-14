@@ -263,4 +263,17 @@ volumes:
   vincent-mongo-data:
     driver: local
 
+```
 
+### When the docker-compose file is complete and ready to be deployed, run the following commands in your terminal
+
+#### If docker compose is not installed in your machine, run the following commands:
+`sudo apt update`
+`sudo apt install docker-compose`
+
+#### Run docker compose command in your root folder
+`docker-compose up --build`
+
+### See the results of the images downloading
+
+`![Images](Images/Pulling-Images.png)`
