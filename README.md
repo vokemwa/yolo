@@ -109,7 +109,7 @@ We will deploy three roles based on the application setup (Frontend/client, Back
 ![Image](Images/playbook-roles.png)
 
 
-## Backend role yaml file
+## Backend role main.yaml file in the tasks folder
 
 ```yaml
 
@@ -135,6 +135,16 @@ We will deploy three roles based on the application setup (Frontend/client, Back
       - "5000:5000"                                          # Mapping of host port 5000 to container port 5000. Therefore your backend app will be accessible on http://localhost:5000
     command: "npm start"                                     # This is the command Docker will run when starting the container. Here, it starts the Node.js backend using npm start
     restart_policy: always                                   # Ensures Docker will automatically restart the container if it stops or the system reboots.
+
+
+```
+
+## Backend main.yaml file in the vars folder
+
+```yaml
+
+container_name: vincent-yolo-backend
+network: vincent-network
 
 
 ```
