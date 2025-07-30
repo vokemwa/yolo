@@ -71,3 +71,17 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 ## In the hosts folder, details of the virtual machine like IP address and Port number are included
 
 ![Images](Images/Detailsof-Hostsfile.png)
+
+## Include ansible playbook in vagrant file
+
+```ruby
+Vagrant.configure("2") do |config| 
+  config.vm.box = "ubuntu/jammy64"
+
+ config.vm.provision "ansible" do |ansible|
+   ansible.playbook = "playbook.yaml"
+   end
+end
+
+```
+![Images](Images/vagrantfile.png)
