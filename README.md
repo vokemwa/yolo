@@ -62,3 +62,6 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 
 `touch ansible.cfg` `touch hosts` `mkdir roles` `touch playbook.yaml`
 
+## Created ansible file with settings of the virtual machine
+
+![Images](Images/Virtualmachine-settings.png)
