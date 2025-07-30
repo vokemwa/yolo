@@ -52,3 +52,13 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 
 `ansible version`
 
+## To list a group of ansible files use:
+
+`ls /etc/ansible`
+
+![Images](Images/ListofAnsibleFiles.png)
+
+## Since we want to track the ansible files, I will recreate them in the root folder
+
+`touch ansible.cfg` `touch hosts` `mkdir roles` `touch playbook.yaml`
+
