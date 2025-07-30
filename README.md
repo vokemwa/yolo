@@ -76,7 +76,7 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 
 ```ruby
 Vagrant.configure("2") do |config| 
-  config.vm.box = "ubuntu/jammy64"
+  config.vm.box = "geerlingguy/ubuntu2004"
 
  config.vm.provision "ansible" do |ansible|
    ansible.playbook = "playbook.yaml"
@@ -89,3 +89,17 @@ end
 ## commission the playbook though empty for now
 
 `vagrant provision`
+
+## Create roles that groups same tasks together using Ansible Galaxy
+
+Ansible galaxy will help in grouping similar tasks together as roles
+We will deploy three roles based on the application setup (Frontend/client, Backend, Database)
+
+`ansible-galaxy init Backend_deployment_settings`
+
+`ansible-galaxy init Client_deployment_settings`
+
+`ansible-galaxy init Database_deployment_settings`
+
+
+![Image](Images/Ansible-roles.png)
