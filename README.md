@@ -107,3 +107,34 @@ We will deploy three roles based on the application setup (Frontend/client, Back
 ## Call the roles from ansible playbook.yaml file
 
 ![Image](Images/playbook-roles.png)
+
+
+## Backend role yaml file
+
+```yaml
+
+- name: Check whether docker network exists before the container runs
+  docker_network:
+   name: apt-network
+   state: present
+
+- name: pull docker image from the docker hub
+  docker_image:
+   name: vokemwa/vincent-yolo-backend:v1.0.0    ## downloads my backend image that I pushed to docker hub
+   source: pull                                 
+
+
+## this task creates and runs a docker container that I pushed to docker hub repository
+- name: Run vincent-yolo-backend container
+  docker_container:
+    name: vincent-yolo-backend                               ## The name of the container in the repository
+    image: vokemwa/vincent-yolo-backend:v1.0.0               ## Dockerhub usernamme/container name:tag
+    networks:
+      - name: vincent-network
+    ports:
+      - "5000:5000"                                          # Mapping of host port 5000 to container port 5000. Therefore your backend app will be accessible on http://localhost:5000
+    command: "npm start"                                     # This is the command Docker will run when starting the container. Here, it starts the Node.js backend using npm start
+    restart_policy: always                                   # Ensures Docker will automatically restart the container if it stops or the system reboots.
+
+
+```
