@@ -64,4 +64,10 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 
 ## Created ansible file with settings of the virtual machine
 
+
 ![Images](Images/Virtualmachine-settings.png)
+
+
+## In the hosts folder, details of the virtual machine like IP address and Port number are included
+
+![Images](Images/Detailsof-Hostsfile.png)
