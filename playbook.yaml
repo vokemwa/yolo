@@ -1,0 +1,6 @@
+hosts: all
+become: true
+roles:
+ - Client_deployment_settings
+ - Database_deployment_settings
+ - Backend_deployment_settings

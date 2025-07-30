@@ -103,3 +103,7 @@ We will deploy three roles based on the application setup (Frontend/client, Back
 
 
 ![Image](Images/Ansible-roles.png)
+
+## Call the roles from ansible playbook.yaml file
+
+![Image](Images/playbook-roles.png)
