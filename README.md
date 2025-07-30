@@ -8,3 +8,30 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 ### See the results of the above commands
 
 ![Images](Images/vagrantcommands.png)
+
+## Create a vagrant file in the root directory
+
+`vagrant init ubuntu/jammy64`
+
+## Spin up the virtual machine using the vagrant file created
+
+`vagrant up`
+
+## ssh into running virtual machine spinned by vagrant which takes you inside ubuntu jammy
+
+`vagrant ssh`
+
+## Typically how to ssh a machine
+
+`ssh user@ipaddress -p port -i private_key`
+
+## to see the vagrant virtual machine version and its details. You should be inside the vagrant vm
+
+`cat /etc/*release`
+
+
+## To get ssh configurations that vagrant is using
+
+`vagrant ssh-config`
+
+
