@@ -1,6 +1,8 @@
 # **Infrastructure as code (iac) using Ansible and Vagrant**
 The role of this IP3 is to test the learners the knowledge of infrastructure as code using Ansible for server configurations and vagrant to create virtual machines. We will use the same react application done in IP2 and deploy the application in a vm. All configurations done using docker containers should be done in ansible playbook.
 
+## **CREATE VIRTUAL MACHINES USING VAGRANT**
+
 ## run vagrant commands for initialization
 `vagrant status`
 `vagrant box list`
@@ -34,4 +36,12 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 
 `vagrant ssh-config`
 
+## to stop a vagrant virtual machine use:
 
+`vagrant halt`
+
+# **ANSIBLE**
+
+## To see ansible version
+
+`ansible version`
