@@ -127,15 +127,14 @@ We will deploy three roles based on the application setup (Frontend/client, Back
 ## this task creates and runs a docker container that I pushed to docker hub repository
 - name: Run vincent-yolo-backend container
   docker_container:
-    name: vincent-yolo-backend                               ## The name of the container in the repository
+    name: "{{ container_name }}"                              ## The name of the container in the repository
     image: vokemwa/vincent-yolo-backend:v1.0.0               ## Dockerhub usernamme/container name:tag
     networks:
-      - name: vincent-network
+      - name: "{{ network }}"
     ports:
       - "5000:5000"                                          # Mapping of host port 5000 to container port 5000. Therefore your backend app will be accessible on http://localhost:5000
     command: "npm start"                                     # This is the command Docker will run when starting the container. Here, it starts the Node.js backend using npm start
     restart_policy: always                                   # Ensures Docker will automatically restart the container if it stops or the system reboots.
-
 
 ```
 
