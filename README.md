@@ -85,3 +85,7 @@ end
 
 ```
 ![Images](Images/vagrantfile.png)
+
+## commission the playbook though empty for now
+
+`vagrant provision`

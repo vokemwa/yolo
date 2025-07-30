@@ -3,5 +3,6 @@ Vagrant.configure("2") do |config|
 
  config.vm.provision "ansible" do |ansible|
    ansible.playbook = "playbook.yaml"
+   ansible.verbose= "vv"
    end
 end
