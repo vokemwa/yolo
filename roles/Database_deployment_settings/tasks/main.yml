@@ -1,3 +1,54 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for Database_deployment_settings
+
+- name: Lets ensure the network for vincent-network exists
+  community.docker.docker_network:
+    name: vincent-network
+    driver: bridge
+    attachable: true
+    state: present
+
+- name: Ensure vincent-mongo-data volume exists
+  community.docker.docker_volume:
+    name: vincent-mongo-data
+    driver: local
+    state: present
+
+
+- name: Pull MongoDB image (mongo:4.4)
+  community.docker.docker_image:
+    name: mongo
+    tag: "4.4"
+    source: pull
+
+- name: Run MongoDB container
+  community.docker.docker_container:
+    name: vincent-mongo
+    image: mongo:4.4
+    state: started
+    restart_policy: always
+    published_ports:
+      - "27017:27017"
+    volumes:
+      - source: vincent-mongo-data
+        target: /data/db
+        type: volume
+    networks:
+      - name: vincent-network
+
+
+- name: Run MongoDB container
+  community.docker.docker_container:
+    name: vincent-mongo
+    image: mongo:4.4
+    state: started
+    restart_policy: always
+    published_ports:
+      - "27017:27017"
+    volumes:
+      - source: vincent-mongo-data
+        target: /data/db
+        type: volume
+    networks:
+      - name: "{{ network }}"
