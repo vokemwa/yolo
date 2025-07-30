@@ -11,6 +11,12 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 
 ![Images](Images/vagrantcommands.png)
 
+## vagrant version
+
+`vagrant version`
+
+![Images](Images/vagrant-version.png)
+
 ## Create a vagrant file in the root directory
 
 `vagrant init ubuntu/jammy64`
@@ -45,3 +51,4 @@ The role of this IP3 is to test the learners the knowledge of infrastructure as 
 ## To see ansible version
 
 `ansible version`
+
