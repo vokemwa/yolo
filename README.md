@@ -147,3 +147,41 @@ network: vincent-network
 
 
 ```
+
+## Yaml files for client/front end role in tasks folder
+
+```yaml
+# tasks file for Client_deployment_settings
+
+# I decided to build instead of downloading from docker hub
+- name: Build the frontend image (vincent-yolo-client) from docker file. 
+  community.docker.docker_image:                         # The ansible module used to build docker images
+    name: vokemwa/vincent-yolo-client
+    tag: v1.0.0
+    source: build     
+    build:
+      path: "{{ playbook_dir }}/client"   # finds the absolute path for the docker file inside the client folder and builds it
+
+# Here, we wantt to create and run the frontend/client container
+- name: Ensure client container is up and running
+  community.docker.docker_container:
+    name: vincent-yolo-client
+    image: vokemwa/vincent-yolo-client:v1.0.0
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3000:80"
+    stdin_open: true
+    tty: true
+    networks:
+      - name: "{{ network }}"
+
+```
+
+## Yaml for client/frontend role in vars folder
+
+```yaml
+
+network: vincent-network
+
+```
