@@ -20,3 +20,6 @@ spec: # This are instructions that tell Kubernetes what the Deployment should do
         image: vokemwa/vincent-yolo-client:v1.0.0 # Pull this Docker image from Docker Hub
         ports:
         - containerPort: 80 # The container will listen on port 80 internally
+
+# Frontend Service
+# A service is like a parmanent address for the pods. This service directs traffic to our pod "vincent-yolo-client" 
