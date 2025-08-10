@@ -21,6 +21,7 @@ spec: # This are instructions that tell Kubernetes what the Deployment should do
         ports:
         - containerPort: 80 # The container will listen on port 80 internally
 
+---
 # Frontend Service
 # A service is like a parmanent address for the pods. This service directs traffic to our pod "vincent-yolo-client" 
 # transfered the service template from kubernetes docs to help me avoid identation errors
@@ -66,3 +67,16 @@ spec:
               value: mongodb://vincent-app-ip-mongo-service:27017   # default port for mongodb
 
 ---
+
+## backend service
+apiVersion: v1
+kind: Service   # this is a service: a stable way to access pods by name even if there is a change in pod IP
+metadata:
+  name: vincent-yolo-backend-service # the name of the service will be "vincent-yolo-backend-service"
+spec:
+  selector:
+    app: vincent-yolo-backend # This service will forward traffic to pods with labels "vincent-yolo-backend" which is actually the name of the deployment
+  ports:
+    - protocol: TCP
+      port: 5000    # This actually is the port in the service that clients connect to
+      targetPort: 5000 # the port inside the container where the app is listening
