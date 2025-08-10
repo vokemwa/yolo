@@ -82,3 +82,19 @@ spec:
             - name: MONGO_URL
               value: mongodb://vincent-app-ip-mongo-service:27017
 ```
+
+## Steps for backend service
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: vincent-yolo-backend-service
+spec:
+  selector:
+    app: vincent-yolo-backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+```
