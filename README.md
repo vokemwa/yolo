@@ -55,3 +55,30 @@ spec:
       targetPort: 80
 
 ```
+
+## Deployment for backend
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vincent-yolo-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vincent-yolo-backend
+  template:
+    metadata:
+      labels:
+        app: vincent-yolo-backend
+    spec:
+      containers:
+        - name: vincent-yolo-backend
+          image: vokemwa/vincent-yolo-backend:v1.0.0
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_URL
+              value: mongodb://vincent-app-ip-mongo-service:27017
+```
