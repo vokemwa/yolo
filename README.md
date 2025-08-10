@@ -99,6 +99,38 @@ spec:
       targetPort: 5000
 ```
 
+
+## Deployment for MongoDB
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vincent-app-ip-mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vincent-app-ip-mongo
+  template:
+    metadata:
+      labels:
+        app: vincent-app-ip-mongo
+    spec:
+      containers:
+        - name: vincent-app-ip-mongo
+          image: mongo:4.4
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+```
+
 ## Persistent volume claim for mongodb databse
 
 ```yaml
@@ -112,4 +144,10 @@ spec:
   resources:
     requests:
       storage: 5Gi
+```
+
+## MongoDB service
+
+```yaml
+
 ```
