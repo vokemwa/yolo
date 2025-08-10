@@ -38,3 +38,19 @@ spec:
             - containerPort: 80
 
 ```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: vincent-yolo-client-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: vincent-yolo-client
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 80
+      
+```
