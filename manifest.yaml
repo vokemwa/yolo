@@ -23,3 +23,17 @@ spec: # This are instructions that tell Kubernetes what the Deployment should do
 
 # Frontend Service
 # A service is like a parmanent address for the pods. This service directs traffic to our pod "vincent-yolo-client" 
+# transfered the service template from kubernetes docs to help me avoid identation errors
+
+apiVersion: v1  # v1 is the stable version in API group
+kind: Service   # this object is a service which is a stable network endpoint for pods
+metadata:
+  name: vincent-yolo-client-service  # The service will be called 
+spec:
+  type: LoadBalancer  # Kubernetes will provision an external load balancer that will get an external IP address so it’s accessible from the internet.
+  selector:
+    app.kubernetes.io/name: vincent-yolo-client  # This Service will route traffic to all Pods with the label app=vincent-yolo-client
+  ports:
+    - protocol: TCP
+      port: 3000  # The port exposed by the Service to the outside world
+      targetPort: 80 # The port inside the Pods’ containers that the Service forwards to
