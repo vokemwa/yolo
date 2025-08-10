@@ -40,7 +40,7 @@ spec:
       targetPort: 80 # The port inside the Pods’ containers that the Service forwards to
 
 ---
-
+## 2.
 ## create a deployment for the backend (Deployment)
 
 apiVersion: apps/v1  # version v1 — the stable API for Deployments
@@ -80,3 +80,54 @@ spec:
     - protocol: TCP
       port: 5000    # This actually is the port in the service that clients connect to
       targetPort: 5000 # the port inside the container where the app is listening
+
+---
+
+## 3.
+
+## Deployment for MongoDB database
+apiVersion: apps/v1  # v1 — stable API for Deployments
+kind: Deployment # This deployment will manage the mongodb pod and ensure it's running by recreating it if it fails
+metadata:
+  name: vincent-app-ip-mongo # this is the deployment's name "vincent-app-ip-mongo"
+spec:
+  replicas: 1 # runs as a single pod instance
+  selector:
+    matchLabels:
+      app: vincent-app-ip-mongo  # this deployment will manage pods with the label "vincent-app-ip-mongo"
+  template:
+    metadata:
+      labels:
+        app: vincent-app-ip-mongo  # the label  will be applied to pods created by this deployment
+    spec:
+      containers:
+        - name: vincent-app-ip-mongo   # this is the container name inside the pod
+          image: mongo:4.4             # this is the official mongodb image version 4.4
+          ports:
+            - containerPort: 27017     # default port
+          volumeMounts:
+            - name: mongo-storage      # it mounts a volume inside the container at /data/db
+              mountPath: /data/db      # this is where mongodb stores its database files i.e ensures data persistence even if the pod is restarted
+      volumes:
+        - name: mongo-storage          # this defines the mongo-storage that is mentioned above
+          persistentVolumeClaim:
+            claimName: mongo-pvc       # ensures MongoDB data survives Pod restarts or redeployments
+
+---
+
+## persistent volume claim for the database
+
+apiVersion: v1   # the PVCs are part of v1
+kind: PersistentVolumeClaim  # This is a request for storage by the pod. Like give me this disk space....
+metadata:
+  name: mongo-pvc  # this is the name of the persistentvolumeclaim referenced in the database deployment above
+spec:
+  accessModes:
+    - ReadWriteOnce  # volume mounted as read-write by only one node at a time
+  resources:
+    requests:
+      storage: 5Gi   # 5 giiigabytes for persistent storage to be allocated by kubernates
+
+---
+
+## 
