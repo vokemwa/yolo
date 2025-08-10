@@ -39,6 +39,7 @@ spec:
 
 ```
 
+## steps for frontend service
 ```yaml
 apiVersion: v1
 kind: Service
@@ -52,5 +53,5 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 80
-      
+
 ```
