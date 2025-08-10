@@ -1,0 +1,22 @@
+# I will combine all files (frontend,backend and mongoDB) into one yaml file for orchestration
+
+# 1. Frontend (Deployment and Service) --copied the template from kubernetes docs to help me in editing to avoid making errors of identation
+apiVersion: apps/v1   #Tells kubernetes which API group and version my manifest is written for
+kind: Deployment      # The kubernetes controller that manages pods
+metadata:
+  name: vincent-yolo-client  # Deployment name that identifies this object uniquely
+spec: # This are instructions that tell Kubernetes what the Deployment should do and how the Pods it manages should be set up
+  selector:
+    matchLabels:
+      app: vincent-yolo-client
+  replicas: 2 # tells deployment to run 2 identical pods at all times
+  template:
+    metadata:
+      labels:
+        app: vincent-yolo-client  # The Pods will be labeled app=vincent-yolo-client
+    spec: # this is pod specifications. This pod only runs one container
+      containers:
+      - name: vincent-yolo-client   # name of the container
+        image: vokemwa/vincent-yolo-client:v1.0.0 # Pull this Docker image from Docker Hub
+        ports:
+        - containerPort: 80 # The container will listen on port 80 internally
