@@ -37,3 +37,32 @@ spec:
     - protocol: TCP
       port: 3000  # The port exposed by the Service to the outside world
       targetPort: 80 # The port inside the Pods’ containers that the Service forwards to
+
+---
+
+## create a deployment for the backend (Deployment)
+
+apiVersion: apps/v1  # version v1 — the stable API for Deployments
+kind: Deployment     # manages Pods and their ReplicaSets, ensuring a desired number are running and up-to-date
+metadata:
+  name: vincent-yolo-backend  # Deployment’s name is vincent-yolo-backend
+spec:
+  replicas: 2   # Run 2 Pods at all times for redundancy/high availability
+  selector:
+    matchLabels:
+      app: vincent-yolo-backend  # checks for pods by label "vincent-yolo-backend"
+  template:
+    metadata:
+      labels:
+        app: vincent-yolo-backend
+    spec:
+      containers:
+        - name: vincent-yolo-backend   # Container name
+          image: vokemwa/vincent-yolo-backend:v1.0.0 # docker image from dockerhub registry
+          ports:
+            - containerPort: 5000  # this container listens on 5000 for incoming requests
+          env:
+            - name: MONGO_URL
+              value: mongodb://vincent-app-ip-mongo-service:27017   # default port for mongodb
+
+---
