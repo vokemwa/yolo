@@ -98,3 +98,18 @@ spec:
       port: 5000
       targetPort: 5000
 ```
+
+## Persistent volume claim for mongodb databse
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+```
