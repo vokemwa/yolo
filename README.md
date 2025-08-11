@@ -161,3 +161,10 @@ spec:
       port: 27017
       targetPort: 27017
 ```
+
+
+## Authenticate Docker with GCP
+
+`gcloud auth configure-docker`
+
+![Images](Images/Autheticatedocker-GCP.png)
