@@ -33,10 +33,10 @@ metadata:
 spec:
   type: LoadBalancer  # Kubernetes will provision an external load balancer that will get an external IP address so it’s accessible from the internet.
   selector:
-    app.kubernetes.io/name: vincent-yolo-client  # This Service will route traffic to all Pods with the label app=vincent-yolo-client
+    app: vincent-yolo-client  # This Service will route traffic to all Pods with the label app=vincent-yolo-client
   ports:
     - protocol: TCP
-      port: 3000  # The port exposed by the Service to the outside world
+      port: 80  # The port exposed by the Service to the outside world
       targetPort: 80 # The port inside the Pods’ containers that the Service forwards to
 
 ---
