@@ -130,4 +130,16 @@ spec:
 
 ---
 
-## 
+## MongoDB service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: vincent-app-ip-mongo-service   # name of the service
+spec:
+  selector:
+    app: vincent-app-ip-mongo # service forwards traffic to pods with label "vincent-app-ip-mongo" defined in deployment
+  ports:
+    - protocol: TCP  # mongodb uses TCP by default
+      port: 27017    # service port
+      targetPort: 27017  # port inside pod's container
