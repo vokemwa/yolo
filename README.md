@@ -224,3 +224,11 @@ Install the gke-gcloud-auth-plugin so kubectl can connect to your cluster:
 `gcloud container clusters get-credentials vincent-cluster --zone us-central1-a`
 
 ![Images](Images/cluster1.png)
+
+
+## Deploy all services:
+
+`kubectl apply -f manifest.yaml`
+
+
+![Images](Images/deploy.png)
