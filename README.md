@@ -168,3 +168,18 @@ spec:
 `gcloud auth configure-docker`
 
 ![Images](Images/Autheticatedocker-GCP.png)
+
+## Tag your local image for Google cloud registry
+
+`docker tag vokemwa/vincent-yolo-client:v1.0.0 gcr.io/vincent-react-app/vincent-yolo-client:v1.0.0`
+
+## Push the image to GCR
+
+`docker push gcr.io/vincent-react-app/vincent-yolo-client:v1.0.0`
+
+But I encountered the belo error:
+
+![Images](Images/errors.png)
+
+I sorted this by enabling Artifact Registry API on google cloud console.
+
