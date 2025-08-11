@@ -239,3 +239,10 @@ Install the gke-gcloud-auth-plugin so kubectl can connect to your cluster:
 `kubectl get svc vincent-yolo-client-service`
 
  ![Images](Images/IP.png)
+
+
+ ## Finally Huraaaa...Am able to see the pods
+
+ `kubectl get endpoints vincent-yolo-client-service`
+
+ ![Images](Images/see.png)
