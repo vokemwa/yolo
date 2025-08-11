@@ -1,6 +1,13 @@
 # **Deploying ReactApp on Google Kubenetes Engine**
 The role of this IP4 is to orchastrate/host the ReactAPP on Google Kubenetes Engine (GKE) so as to be reachable via internet, use stateful set to deploy mongoDB and persistent volumes.
 
+
+## Site url 
+
+ [ReactAPP](http://34.70.158.136/)
+
+
+
 ## First, let's create a new branch for IP4 
 
 ![Images](Images/CreateIP$Branch.png)
@@ -252,4 +259,3 @@ Install the gke-gcloud-auth-plugin so kubectl can connect to your cluster:
 
  [ReactAPP](http://34.70.158.136/)
 
- 
