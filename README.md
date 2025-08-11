@@ -181,5 +181,12 @@ But I encountered the belo error:
 
 ![Images](Images/errors.png)
 
-I sorted this by enabling Artifact Registry API on google cloud console.
+I sorted this by enabling Artifact Registry API on google cloud console then I re-run my command
+
+`docker push gcr.io/vincent-react-app/vincent-yolo-client:v1.0.0`
+
+![Images](Images/PushImageFrontend.png)
+
+
+
 
