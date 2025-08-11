@@ -149,5 +149,15 @@ spec:
 ## MongoDB service
 
 ```yaml
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: vincent-app-ip-mongo-service
+spec:
+  selector:
+    app: vincent-app-ip-mongo
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
 ```
