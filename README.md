@@ -169,11 +169,11 @@ spec:
 
 ![Images](Images/Autheticatedocker-GCP.png)
 
-## Tag your local image for Google cloud registry
+## Tag your local image (Frontend)for Google cloud registry
 
 `docker tag vokemwa/vincent-yolo-client:v1.0.0 gcr.io/vincent-react-app/vincent-yolo-client:v1.0.0`
 
-## Push the image to GCR
+## Push the image (Frontend) to GCR
 
 `docker push gcr.io/vincent-react-app/vincent-yolo-client:v1.0.0`
 
@@ -187,6 +187,13 @@ I sorted this by enabling Artifact Registry API on google cloud console then I r
 
 ![Images](Images/PushImageFrontend.png)
 
+## Tag your local image (Backend)for Google cloud registry
 
+`docker tag vokemwa/vincent-yolo-backend:v1.0.0 gcr.io/vincent-react-app/vincent-yolo-backend:v1.0.0`
 
+## Push the image (Backend) to GCR
+
+`docker push gcr.io/vincent-react-app/vincent-yolo-backend:v1.0.0`
+
+![Images](Images/Backendpush.png)
 
