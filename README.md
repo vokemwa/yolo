@@ -211,3 +211,16 @@ I sorted this by reducing Reduce Node Boot Disk Size
 `gcloud container clusters create vincent-cluster --zone us-central1-a --num-nodes=3 --disk-size=80GB`
 
 ![Images](Images/cluster.png)
+
+## From the error above
+
+Install the gke-gcloud-auth-plugin so kubectl can connect to your cluster:
+
+`sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin`
+
+
+## get the cluster
+
+`gcloud container clusters get-credentials vincent-cluster --zone us-central1-a`
+
+![Images](Images/cluster1.png)
