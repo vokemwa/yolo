@@ -232,3 +232,10 @@ Install the gke-gcloud-auth-plugin so kubectl can connect to your cluster:
 
 
 ![Images](Images/deploy.png)
+
+
+## Get the loadbalancer IP for frontend
+
+`kubectl get svc vincent-yolo-client-service`
+
+ ![Images](Images/IP.png)
