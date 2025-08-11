@@ -30,4 +30,19 @@ The backend is also composed of two parts:
      - the service finds all pods with the label app=vincent-yolo-backend
      - the service listens to port 5000 inside the cluster
      - the service also forwards traffic to port 5000 on the pod
-     
+
+## MongoDB part of manifest file
+The mongo db comprises of three parts:
+  1. Kubernetes Deployment definition:
+     - This deployment manages the mongodb pod and ensure it's running by recreating it if it fails
+     - gives the deployment a name
+     - Runs MongoDB (`version 4.4`) in a single replica pod
+     - it exposes mongo DB's default port 27017 for connections inside the cluster
+     - it mounts a persistent storage so that the database data doesn't get lost when the pod restarts
+     - it also uses persistent volume claim to request for storage
+  2. persistent volume claim for the database
+     - This is a request for storage by the pod. Like give me this disk space....
+     - It’s a storage request Kubernetes will fulfill so MongoDB has disk space to save data.
+  3. MongoDB service
+     - Exposes MongoDB on port 27017 inside the cluster
+     - this service lets other pods like the backend pod to connect to MongoDB
