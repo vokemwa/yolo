@@ -197,3 +197,17 @@ I sorted this by enabling Artifact Registry API on google cloud console then I r
 
 ![Images](Images/Backendpush.png)
 
+
+## Create a GKE cluster:
+
+`gcloud container clusters create vincent-cluster --zone us-central1-a --num-nodes=3`
+
+But there is an error
+
+![Images](Images/quota%20error.png)
+
+I sorted this by reducing Reduce Node Boot Disk Size
+
+`gcloud container clusters create vincent-cluster --zone us-central1-a --num-nodes=3 --disk-size=80GB`
+
+![Images](Images/cluster.png)
